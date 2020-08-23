@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import useSWR, { trigger, mutate } from 'swr'
 
-const URL = `http://localhost:3000/api/stories`;
+const URL = `/api/stories`;
 
 const AddStory = () => {
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 import AddStory from '../components/AddStory';
 import { Fragment } from 'react';
 
-const URL = `http://localhost:3000/api/stories`;
+const URL = `/api/stories`;
 
 const Stories = () => {
 
