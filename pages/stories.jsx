@@ -1,11 +1,11 @@
 import useSWR, { trigger, mutate, SWRConfig } from 'swr';
 import axios from 'axios';
 import AddStory from '../components/AddStory';
+import { Fragment } from 'react';
 
 const URL = `http://localhost:3000/api/stories`;
 
 const Stories = () => {
-
 
     const { data, error } = useSWR(URL);
 
@@ -16,9 +16,15 @@ const Stories = () => {
     return (
         <div>
             <ul>
-                {data.data.map(story => <li key={story._id}>
-                    {story.title}
-                </li>)}
+                {data.data.map(story => <div key={story._id}>
+                    <li>
+                        {story.title}
+                    </li>
+                    <button onClick={async e => {
+                        await axios.delete(`${URL}/${story._id}`)
+                        trigger(URL);
+                    }}>delete</button>
+                </div>)}
             </ul>
             <AddStory />
         </div>

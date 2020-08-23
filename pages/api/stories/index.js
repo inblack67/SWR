@@ -1,5 +1,5 @@
-import Story from '../../models/Story';
-import { connectDB } from '../../src/connectDB';
+import Story from '../../../models/Story';
+import { connectDB } from '../../../src/connectDB';
 
 connectDB();
 

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { trigger } from 'swr'
+import useSWR, { trigger, mutate } from 'swr'
 
 const URL = `http://localhost:3000/api/stories`;
 
@@ -24,6 +24,11 @@ const AddStory = () => {
                         }
                     }
                     const res = await axios.post(`${URL}`, formData, config);
+
+                    console.log(`story ${res.data}`);
+
+                    // updating state without waitng for server conn
+                    // mutate(URL, [...data.data, formData], false)
 
                     trigger(`${URL}`);
 
